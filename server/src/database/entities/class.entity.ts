@@ -6,20 +6,24 @@ import {
     ManyToOne,
     OneToOne,
 } from 'typeorm';
+import { Car } from './car.entity';
 
 
 @Entity('classes')
-export class DebtRequest {
+export class Class {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column({ type: 'text', nullable: false })
-    class: string;
+    className: string;
 
     @Column({ type: 'float', nullable: false })
-    amount: number;
+    price: number;
 
     @Column({ type: 'boolean', default: false })
     isDeleted: boolean;
+
+    @OneToMany(type => Car, car => car.className)
+    cars: Promise<Car[]>;
 
 }
