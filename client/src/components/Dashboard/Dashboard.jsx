@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
     const rentedCards = this.state.rentedCars.map((car) => <DashboardItem />);
 
     return (
-      <div className="container">
+      <div className="containerTable">
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
