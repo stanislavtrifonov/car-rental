@@ -22,7 +22,7 @@ import { Car } from '../database/entities/car.entity';
 export class CarsController {
     public constructor(private readonly carsService: CarsService) { }
 
-    @Get()
+    @Get('/available')
     @HttpCode(HttpStatus.OK)
     public async getAllAvailableCars () {
       const allAvailableCars: Car[] = await this.carsService.getAllAvailableCars();
