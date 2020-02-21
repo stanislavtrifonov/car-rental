@@ -14,15 +14,15 @@ export class ContractsService {
     ) { }
 
     public async getAllContracts(): Promise<Contract[]> {
-        const allCarsData: Car[] = await this.carsRepository.find({
+        const allContractsData: Contract[] = await this.contractsRepository.find({
             where: {
-                isBorrowed: false,
+                deliveredDate: 'n/a',
                 isDeleted: false,
             },
-            relations: ['className'],
+            relations: ['car'],
         });
 
-        return allCarsData;
+        return allContractsData;
     }
 
 }
