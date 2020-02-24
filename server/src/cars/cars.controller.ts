@@ -3,15 +3,6 @@ import {
     Get,
     HttpCode,
     HttpStatus,
-    UseInterceptors,
-    Post,
-    Body,
-    UseGuards,
-    ValidationPipe,
-    Put,
-    Param,
-    Delete,
-    UsePipes,
   } from '@nestjs/common';
   
 import { CarsService } from './cars.service';
