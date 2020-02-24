@@ -30,4 +30,14 @@ export class ContractsController {
 
       return allContracts;
     }
+
+    @Post()
+    @HttpCode(HttpStatus.CREATED)
+    public async returnCar(
+      @Body() {contractId, carId},
+    ): Promise<Contract> {
+
+      return await this.contractsService.returnCar(contractId, carId);
+    }
+  
 }

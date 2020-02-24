@@ -7,7 +7,8 @@ const DashboardItem = (props) => (
     <td>Car</td>
     <td>{props.contract.borrowerFistName}</td>
     <th>{props.contract.borrowerLastName} </th>
-    <td>{props.contract.borrowerLastName}</td>
+    <td>{props.contract.startDate}</td>
+    <td>{props.contract.contractEndDate}</td>
     <td>{props.contract.startDate}</td>
     <td>Estimat</td>
     <td>Current</td>

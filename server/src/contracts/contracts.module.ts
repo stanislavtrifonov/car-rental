@@ -7,7 +7,7 @@ import { ContractsController } from './contracts.controller';
 import { ContractsService } from './contracts.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Car, Class, Contract])],
+    imports: [TypeOrmModule.forFeature([Car, Contract])],
     controllers: [ContractsController],
     providers: [ContractsService],
 })

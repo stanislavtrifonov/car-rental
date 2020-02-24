@@ -9,7 +9,6 @@ import { Contract } from '../database/entities/contract.entity';
 export class ContractsService {
     public constructor(
         @InjectRepository(Car) private readonly carsRepository: Repository<Car>,
-        @InjectRepository(Class) private readonly classesRepository: Repository<Class>,
         @InjectRepository(Contract) private readonly contractsRepository: Repository<Contract>
     ) { }
 
@@ -19,10 +18,26 @@ export class ContractsService {
                 deliveredDate: 'n/a',
                 isDeleted: false,
             },
-            relations: ['car'],
+            relations: ['car', 'car.className'],
         });
 
         return allContractsData;
+    }
+
+    public async returnCar(contractId: string, carId: string): Promise<Contract> {
+        const foundContract = await this.contractsRepository.findOne({
+            where: {
+                id: contractId
+            }
+        })
+
+        const foundCar = await this.carsRepository.findOne({
+            where: {
+                id: carId
+            }
+        })
+
+        return foundContract;
     }
 
 }

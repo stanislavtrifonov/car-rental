@@ -36,6 +36,7 @@ class Dashboard extends React.Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>From</th>
+              <th>Estimated Return Date</th>
               <th>Estimated Days Rented</th>
               <th>Estimated Price per Day</th>
               <th>Current Days Rented</th>
