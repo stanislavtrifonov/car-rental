@@ -7,14 +7,24 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rentedCars: ['a', 'a', 'a'],
+      contracts: [],
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/contracts')
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({
+          contracts: result,
+        });
+        console.log(result);
+      });
+  }
 
 
   render() {
-    const rentedCards = this.state.rentedCars.map((car) => <DashboardItem />);
+    const contracts = this.state.contracts.map((contract) => <DashboardItem key={contract.id} contract={contract} />);
 
     return (
       <div className="containerTable">
@@ -35,7 +45,7 @@ class Dashboard extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {rentedCards}
+            {contracts}
           </tbody>
         </Table>
       </div>
