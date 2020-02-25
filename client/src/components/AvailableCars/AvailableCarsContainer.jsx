@@ -20,8 +20,6 @@ class AvailableCarsContainer extends React.Component {
         });
         console.log(result);
       });
-    const test = moment(new Date()).format('YYYY-MM-DD HH:mm');
-    console.log(test);
   }
 
   render() {

@@ -21,7 +21,7 @@ const AvailableCarCard = (props) => (
           {props.car.__className__.className}
         </Card.Text>
         <Card.Text>
-          Price per day 38$
+          Price per day {props.car.__className__.price}$
         </Card.Text>
         <Link to={'/cars/' + props.car.id}>Checkout</Link>
       </Card.Body>
