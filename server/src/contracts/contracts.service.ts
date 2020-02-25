@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Car } from '../database/entities/car.entity';
 import { Repository } from 'typeorm';
-import { Class } from '../database/entities/class.entity';
 import { Contract } from '../database/entities/contract.entity';
 
 @Injectable()

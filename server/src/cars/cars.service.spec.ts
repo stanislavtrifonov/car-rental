@@ -77,7 +77,7 @@ describe('CarsService', () => {
     const result = await service.getAllAvailableCars()
 
     /// Assert
-    expect(result).toEqual(carMock)
+    expect(result).toBe(carMock)
 
     spy.mockClear();
   });

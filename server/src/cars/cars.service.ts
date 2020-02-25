@@ -24,4 +24,16 @@ export class CarsService {
         return allCarsData;
     }
 
+    public async getIndividualCar(id: string): Promise<Car> {
+        const individualCar: Car = await this.carsRepository.findOne({
+            where: {
+                id: id,
+                isBorrowed: false,
+                isDeleted: false,
+            },
+            relations: ['className']
+        })
+        return individualCar;
+    }
+
 }

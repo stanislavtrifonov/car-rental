@@ -3,18 +3,10 @@ import {
     Get,
     HttpCode,
     HttpStatus,
-    UseInterceptors,
     Post,
     Body,
-    UseGuards,
-    ValidationPipe,
-    Put,
-    Param,
-    Delete,
-    UsePipes,
   } from '@nestjs/common';
-  
-import { Car } from '../database/entities/car.entity';
+
 import { ContractsService } from './contracts.service';
 import { Contract } from '../database/entities/contract.entity';
 
