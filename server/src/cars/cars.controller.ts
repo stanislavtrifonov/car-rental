@@ -8,7 +8,6 @@ import {
   
 import { CarsService } from './cars.service';
 import { Car } from '../database/entities/car.entity';
-import { stringify } from 'querystring';
 
 
 @Controller('cars')

@@ -8,6 +8,10 @@ describe('Cars Controller', () => {
     getAllAvailableCars() {
       /* empty */
     },
+
+    getIndividualCar() {
+      /* empty */
+    },
   };
 
   beforeEach(async () => {
@@ -36,16 +40,35 @@ describe('Cars Controller', () => {
       .spyOn(carsService, 'getAllAvailableCars')
       .mockImplementation(async () => output);
 
-  // Act
+    // Act
 
-  const result = await carsService.getAllAvailableCars();
+    const result = await carsService.getAllAvailableCars();
 
-  // Assert
+    // Assert
 
-  expect(spy).toHaveBeenCalledTimes(1)
-  expect(result).toEqual(output);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(result).toEqual(output);
 
-  spy.mockClear();
-});
+    spy.mockClear();
+  });
 
+  it('getIndividualCar should return the result from carsService.getIndividualCar()', async () => {
+    // Arrange
+    const output = 'test';
+
+    const spy = jest
+      .spyOn(carsService, 'getIndividualCar')
+      .mockImplementation(async () => output);
+
+    // Act
+
+    const result = await carsService.getIndividualCar();
+
+    // Assert
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(result).toEqual(output);
+
+    spy.mockClear();
+  });
 });
