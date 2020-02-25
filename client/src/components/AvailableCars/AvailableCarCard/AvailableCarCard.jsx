@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import './AvailableCarCard.css';
+import { Link } from 'react-router-dom';
 
 const AvailableCarCard = (props) => (
   <div className="col-lg-3 col-md-6">
@@ -22,7 +23,7 @@ const AvailableCarCard = (props) => (
         <Card.Text>
           Price per day 38$
         </Card.Text>
-        <Button variant="outline-success">Checkout</Button>
+        <Link to={'/cars/' + props.car.id}>Checkout</Link>
       </Card.Body>
     </Card>
   </div>

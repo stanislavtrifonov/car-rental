@@ -1,6 +1,7 @@
 import React from 'react';
 import AvailableCarCard from './AvailableCarCard/AvailableCarCard';
 import './AvailableCarsContainer.css';
+import * as moment from 'moment';
 
 class AvailableCarsContainer extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class AvailableCarsContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/cars/available')
+    fetch('http://localhost:3000/cars')
       .then((res) => res.json())
       .then((result) => {
         this.setState({
@@ -19,6 +20,8 @@ class AvailableCarsContainer extends React.Component {
         });
         console.log(result);
       });
+    const test = moment(new Date()).format('YYYY-MM-DD HH:mm');
+    console.log(test);
   }
 
   render() {

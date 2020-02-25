@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import './Dashboard.css';
 import DashboardItem from './DashboardItem/DashboardItem';
 
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
