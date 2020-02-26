@@ -15,7 +15,7 @@ export class Contract {
     id: string;
 
     @Column({ type: 'text', nullable: false })
-    borrowerFistName: string;
+    borrowerFirstName: string;
 
     @Column({ type: 'text', nullable: false })
     borrowerLastName: string;
@@ -31,6 +31,9 @@ export class Contract {
 
     @Column({ type: 'text', default: 'n/a' })
     deliveredDate: string;
+
+    @Column({ type: 'float', default: 0 })
+    pricePaid: number;
 
     @Column({ type: 'boolean', default: false })
     isDeleted: boolean;

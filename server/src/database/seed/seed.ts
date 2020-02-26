@@ -63,7 +63,7 @@ const seed = async () => {
 
         const opelAstraContract1 = contractsRepository.create();
 
-        opelAstraContract1.borrowerFistName = 'Bruce';
+        opelAstraContract1.borrowerFirstName = 'Bruce';
         opelAstraContract1.borrowerLastName = 'Wayne';
         opelAstraContract1.borrowerAge = 36;
         opelAstraContract1.startDate = '19/02/2020 5.06';
