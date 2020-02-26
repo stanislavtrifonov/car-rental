@@ -5,10 +5,12 @@ import {
     HttpStatus,
     Post,
     Body,
+    Param,
   } from '@nestjs/common';
 
 import { ContractsService } from './contracts.service';
 import { Contract } from '../database/entities/contract.entity';
+import { NewContractDTO } from './models/newContract.dto';
 
 
 @Controller('contracts')
@@ -21,6 +23,16 @@ export class ContractsController {
       const allContracts: Contract[] = await this.contractsService.getAllContracts();
 
       return allContracts;
+    }
+
+    @Post('/car/:carId')
+    @HttpCode(HttpStatus.CREATED)
+    public async newContract(
+      @Body() body: NewContractDTO,
+      @Param('carId') carId: string,
+    ): Promise<Contract> {
+
+      return await this.contractsService.createContract(body, carId);
     }
 
     @Post()

@@ -4,6 +4,8 @@ import './CheckoutPage.css';
 import BookingForm from './BookingForm/BookingForm';
 import PriceEstimationCard from './PriceEstimationCard/PriceEstimationCard';
 
+
+
 export default class CheckoutPage extends React.Component {
   constructor(props) {
     super(props);
@@ -26,14 +28,15 @@ export default class CheckoutPage extends React.Component {
 
   render() {
     const car = { ...this.state.car };
+    const { carId } = this.props.match.params;
     console.log(car);
     return (
       <div className="checkoutMainContainer">
         <h1>Checkout rental car</h1>
         <div className="formItems">
           <CheckoutCarCard car={car} />
-          <BookingForm />
-          <PriceEstimationCard />
+          <BookingForm car={car} />
+          <PriceEstimationCard car={car} />
         </div>
 
       </div>

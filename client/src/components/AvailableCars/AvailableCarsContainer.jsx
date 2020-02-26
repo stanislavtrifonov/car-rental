@@ -1,7 +1,7 @@
 import React from 'react';
 import AvailableCarCard from './AvailableCarCard/AvailableCarCard';
 import './AvailableCarsContainer.css';
-import * as moment from 'moment';
+
 
 class AvailableCarsContainer extends React.Component {
   constructor(props) {
