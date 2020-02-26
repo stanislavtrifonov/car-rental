@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import {
-  Row, Col, Grid, Button, InputGroup,
+  Col, Button
 } from 'react-bootstrap';
 import './BookingForm.css';
 import * as moment from 'moment';
@@ -25,7 +25,7 @@ export default class BookingForm extends React.Component {
     const value = event.target.value;
     const newObj = {};
     newObj[name] = value;
-    newObj.startDate = moment(new Date()).format('YYYY-MM-DD HH:mm');
+    newObj.startDate = moment(new Date()).format('YYYY-MM-DDTHH:mm');
     console.log(this.props.car.id)
     this.setState({
         checkoutForm: Object.assign(this.state.checkoutForm, newObj),
@@ -37,6 +37,10 @@ export default class BookingForm extends React.Component {
 
   onInputSubmit = (event) => {
     event.preventDefault();
+
+    if(this.state.checkoutForm.startDate > this.state.checkoutForm.startDate ) {
+      throw new Error('Please enter a valid date')
+    }
 
     fetch(`http://localhost:3000/contracts/car/${this.props.car.id}`, {
       method: "POST",
@@ -102,11 +106,12 @@ export default class BookingForm extends React.Component {
             type="datetime-local" 
             required
             data-name="contractEndDate"
-            defaultValue="2019-02-12T19:30"
+            defaultValue={moment(new Date()).format('YYYY-MM-DDTHH:mm')}
+            min={moment(new Date()).format('YYYY-MM-DDThh:mm')}
             onChange={this.onInputChange}
              />
             <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
+              Please provide a valid date.
             </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>

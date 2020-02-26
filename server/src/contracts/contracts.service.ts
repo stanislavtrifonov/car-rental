@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as moment from 'moment';
 import { Car } from '../database/entities/car.entity';
 import { Repository } from 'typeorm';
 import { Contract } from '../database/entities/contract.entity';
@@ -32,8 +33,12 @@ export class ContractsService {
             }
         })
 
-        console.log(body)
-        console.log(foundCar)
+        if (body.startDate > body.contractEndDate) {
+            throw new BadRequestException({
+                "status": 400,
+                "error": "Return date cannot be before today"
+            })
+        }
 
         const newContract = await this.contractsRepository.create(body)
         newContract.car = Promise.resolve(foundCar)

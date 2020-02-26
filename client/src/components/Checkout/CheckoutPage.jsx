@@ -1,4 +1,5 @@
 import React from 'react';
+import * as moment from 'moment';
 import CheckoutCarCard from './CheckoutCarCard/CheckoutCarCard';
 import './CheckoutPage.css';
 import BookingForm from './BookingForm/BookingForm';
@@ -24,6 +25,8 @@ export default class CheckoutPage extends React.Component {
         });
         console.log(result);
       });
+      const time = (moment(new Date()).format('YYYY-MM-DDThh:mm'))
+      console.log(time)
   }
 
   render() {
