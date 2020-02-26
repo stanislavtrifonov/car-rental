@@ -3,8 +3,6 @@ import {
     PrimaryGeneratedColumn,
     Column,
     OneToMany,
-    ManyToOne,
-    OneToOne,
 } from 'typeorm';
 import { Car } from './car.entity';
 

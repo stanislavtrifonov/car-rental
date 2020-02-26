@@ -4,7 +4,6 @@ import {
     Column,
     OneToMany,
     ManyToOne,
-    OneToOne,
 } from 'typeorm';
 import { Class } from './class.entity';
 import { Contract } from './contract.entity'
