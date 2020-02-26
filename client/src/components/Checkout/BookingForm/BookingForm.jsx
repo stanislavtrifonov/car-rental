@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import './BookingForm.css';
 import * as moment from 'moment';
+import { toast } from "react-toastify";
 
 export default class BookingForm extends React.Component {
   constructor(props) {
@@ -38,9 +39,16 @@ export default class BookingForm extends React.Component {
   onInputSubmit = (event) => {
     event.preventDefault();
 
-    if(this.state.checkoutForm.startDate > this.state.checkoutForm.startDate ) {
-      throw new Error('Please enter a valid date')
+    if(moment(this.state.checkoutForm.startDate).format('YYYY-MM-DDTHH:mm') > moment(this.state.checkoutForm.contractEndDate).format('YYYY-MM-DDTHH:mm') ) {
+      toast.error("Return date cannot be in the past", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      console.log('test')
+
     }
+    console.log(this.state.checkoutForm.startDate)
+    console.log(this.state.checkoutForm.contractEndDate)
+
 
     fetch(`http://localhost:3000/contracts/car/${this.props.car.id}`, {
       method: "POST",
