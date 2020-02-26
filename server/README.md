@@ -1,75 +1,94 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+Car Rental Platform
 
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Project Description
+  A platform which allows an office worker at a car rental compnay to make new contracts and return borrwered cars
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Getting Started
+These instructions will get you a copy of the project and allow you to run it on your local machine for development and testing purposes.
 
-## Installation
+Server
+After you clone successfully this repository:
 
-```bash
+
+navigate to the api folder
+
+
+create a database with docker and Postgres. As a defaut name for the db you can use 'car'. https://hub.docker.com/_/postgres
+
+
+
+create .env file at root level- it contains sensitive data about your server. DB_USERNAME and DB_PASSWORD are the ones set by you
+
+
+DB_TYPE = postgres
+ DB_HOST = localhost
+ DB_PORT = 5432
+ DB_USERNAME = YOUR_USERNAME
+ DB_PASSWORD = YOUR_PASSWORD
+ DB_DATABASE_NAME = car
+
+create ormconfig.json file at root level
+
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "YOUR_USERNAME",
+    "password": "YOUR_PASSWORD",
+    "database": "car",
+    "synchronize": "false",
+    "entities": [
+        "src/database/entities/**/*.ts"
+    ],
+    "migrations": [
+        "src/database/migration/**/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "src/database/entities",
+        "migrationsDir": "src/database/migration"
+    }
+}
+
+
+open the terminal or bash at root level and run the following commands:
 $ npm install
-```
-
-## Running the app
-
-```bash
-# development
+- to populate the database:
+$ npm run typeorm:run 
+- runs the migration to the database
+$ npm run seed
+- it will enter basic data in the database
 $ npm run start
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+Client
 
-## Test
+Having successfully run the server, you can run the application
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+navigate to the client folder
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+open the terminal and run the following commands:
+$ npm install
+$ npm start
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+Testing (Server)
+$ npm test
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+Technologies
 
-  Nest is [MIT licensed](LICENSE).
+React
+NestJS
+TypeORM
+
+
+Authors and Contributors
+
+Stanislav Trifonov
+
+
+License
+This project is licensed under the MIT License
