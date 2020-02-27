@@ -16,7 +16,11 @@ navigate to the api folder
 
 create a database with docker and Postgres. As a defaut name for the db you can use 'car'. https://hub.docker.com/_/postgres
 
+Create a new docker image:
+docker run --name custom_postgres -p 5432:5432 -e POSTGRES_PASSWORD=atscale -e POSTGRES_USER=atscale -d postgres:11.5
 
+You may need to start the image:
+docker container start addImageIdHere
 
 create .env file at root level- it contains sensitive data about your server. DB_USERNAME and DB_PASSWORD are the ones set by you
 
