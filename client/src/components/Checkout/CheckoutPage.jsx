@@ -6,7 +6,6 @@ import BookingForm from './BookingForm/BookingForm';
 import PriceEstimationCard from './PriceEstimationCard/PriceEstimationCard';
 
 
-
 export default class CheckoutPage extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +24,11 @@ export default class CheckoutPage extends React.Component {
         });
         console.log(result);
       });
-      const time = (moment(new Date()).format('YYYY-MM-DDThh:mm'))
-      console.log(time)
+    const time = (moment(new Date()).format('YYYY-MM-DDThh:mm'));
+    console.log(time);
+
+    const endTime = moment(new Date(), 'YYYY/MM/DDTHH:mm');
+    console.log(endTime)
   }
 
   render() {

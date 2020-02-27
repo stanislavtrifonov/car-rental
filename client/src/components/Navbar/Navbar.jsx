@@ -11,8 +11,8 @@ const NavigationBarCars = () => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <NavLink to="/home">Cars</NavLink>
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <Link to="/home">Cars</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </Nav>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />

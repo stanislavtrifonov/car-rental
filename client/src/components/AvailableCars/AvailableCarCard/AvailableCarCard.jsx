@@ -4,7 +4,7 @@ import './AvailableCarCard.css';
 import { Link } from 'react-router-dom';
 
 const AvailableCarCard = (props) => (
-  <div className="col-lg-3 col-md-6">
+  <div className="col-lg-4 col-md-6">
     <Card className="card">
       <Card.Img
         variant="top"
