@@ -10,57 +10,57 @@ import { toast } from "react-toastify";
 export default class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        checkoutForm: {
-            borrowerFirstName: null,
-            borrowerLastName: null,
-            borrowerAge: null,
-            startDate: null,
-            contractEndDate: null,
-        }
-    };
+    // this.state = {
+    //     checkoutForm: {
+    //         borrowerFirstName: null,
+    //         borrowerLastName: null,
+    //         borrowerAge: null,
+    //         startDate: null,
+    //         contractEndDate: null,
+    //     }
+    // };
   }
 
   onInputChange = (event) => {
-    const name = event.target.dataset.name;
-    const value = event.target.value;
-    const newObj = {};
-    newObj[name] = value;
-    newObj.startDate = moment(new Date()).format('YYYY-MM-DDTHH:mm');
-    console.log(this.props.car.id)
-    this.setState({
-        checkoutForm: Object.assign(this.state.checkoutForm, newObj),
-    })
+    // const name = event.target.dataset.name;
+    // const value = event.target.value;
+    // const newObj = {};
+    // newObj[name] = value;
+    // newObj.startDate = moment(new Date()).format('YYYY-MM-DDTHH:mm');
+    // console.log(this.props.car.id)
+    // this.setState({
+    //     checkoutForm: Object.assign(this.state.checkoutForm, newObj),
+    // })
 
 
-    console.log(this.state.checkoutForm)
+    // console.log(this.state.checkoutForm)
   }
 
-  onInputSubmit = (event) => {
-    event.preventDefault();
+  // onInputSubmit = (event) => {
+  //   event.preventDefault();
 
-    if(moment(this.state.checkoutForm.startDate).format('YYYY-MM-DDTHH:mm') > moment(this.state.checkoutForm.contractEndDate).format('YYYY-MM-DDTHH:mm') ) {
-      toast.error("Return date cannot be in the past", {
-        position: toast.POSITION.BOTTOM_RIGHT
-      });
-      console.log('test')
+  //   if(moment(this.state.checkoutForm.startDate).format('YYYY-MM-DDTHH:mm') > moment(this.state.checkoutForm.contractEndDate).format('YYYY-MM-DDTHH:mm') ) {
+  //     toast.error("Return date cannot be in the past", {
+  //       position: toast.POSITION.BOTTOM_RIGHT
+  //     });
+  //     console.log('test')
 
-    }
-    console.log(this.state.checkoutForm.startDate)
-    console.log(this.state.checkoutForm.contractEndDate)
+  //   }
+  //   console.log(this.state.checkoutForm.startDate)
+  //   console.log(this.state.checkoutForm.contractEndDate)
 
 
-    fetch(`http://localhost:3000/contracts/car/${this.props.car.id}`, {
-      method: "POST",
-      body: JSON.stringify(this.state.checkoutForm),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(data => data.json())
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
-  }
+  //   fetch(`http://localhost:3000/contracts/car/${this.props.car.id}`, {
+  //     method: "POST",
+  //     body: JSON.stringify(this.state.checkoutForm),
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //     .then(data => data.json())
+  //     .then(response => console.log(response))
+  //     .catch(err => console.log(err));
+  // }
 
 
   render() {
@@ -76,7 +76,7 @@ export default class BookingForm extends React.Component {
               placeholder="First name"
               defaultValue="Mark"
               data-name="borrowerFirstName"
-              onChange={this.onInputChange}
+              onChange={this.props.changed}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
@@ -88,7 +88,7 @@ export default class BookingForm extends React.Component {
               placeholder="Last name"
               defaultValue="Otto"
               data-name="borrowerLastName"
-              onChange={this.onInputChange}
+              onChange={this.props.changed}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
@@ -102,7 +102,7 @@ export default class BookingForm extends React.Component {
             defaultValue="18"
             required
             data-name="borrowerAge"
-            onChange={this.onInputChange}
+            onChange={this.props.changed}
              />
             <Form.Control.Feedback type="invalid">
               Please provide a valid age.
@@ -116,14 +116,14 @@ export default class BookingForm extends React.Component {
             data-name="contractEndDate"
             defaultValue={moment(new Date()).format('YYYY-MM-DDTHH:mm')}
             min={moment(new Date()).format('YYYY-MM-DDThh:mm')}
-            onChange={this.onInputChange}
+            onChange={this.props.changed}
              />
             <Form.Control.Feedback type="invalid">
               Please provide a valid date.
             </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
-        <Button onClick={this.onInputSubmit}>Book</Button>
+        <Button onClick={this.props.onInputSubmit}>Book</Button>
         <Button >Cancel</Button>
       </Form>
     );
