@@ -23,7 +23,7 @@ class AvailableCarsContainer extends React.Component {
   }
 
   render() {
-    const cars = [...this.state.cars];
+    const { cars } = this.state;
     const cards = cars.map((car) => <AvailableCarCard key={car.id} car={car} />);
 
     return (

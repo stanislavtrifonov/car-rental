@@ -105,26 +105,21 @@ it('estimatedAgeDiscount should not return a number if the borrower age is below
 
 it('estimatedPricePerDay should call estimatedAgeDiscount() and estimatedDaysDiscount()', () => {
   // Arramge
-  const borrowerAge = 7;
+  const borrowerAge = 18;
   const carBasePrice = 80;
+  const daysRented = 1;
 
-  const mockedFunctions = {
-    estimatedAgeDiscount() {
-      /* empty */
-    },
-    estimatedDaysDiscount() {
-      /* empty */
-    },
-  };
+  const estimatedDaysDiscountFunctionMock = jest.fn((x) => 1);
+  const estimatedAgeDiscountFunctionMock = jest.fn((x) => 1);
 
 
   // Act
 
-  const result = priceCalculations.estimatedAgeDiscount(borrowerAge);
+  const result = priceCalculations.estimatedPricePerDay(daysRented, borrowerAge, carBasePrice, estimatedDaysDiscountFunctionMock, estimatedAgeDiscountFunctionMock);
 
   // Assert
 
-  expect(result).toEqual(1);
+  expect(result).toEqual(80);
 });
 
 it('estimatedDaysRented case 1: (Pick-up time: 2020.01.01 10:00. Return time 2020.01.02 09:00 is considered 1 day)', () => {
@@ -175,9 +170,11 @@ it('currentDaysRented case 1: (Pick-up time: 2020.01.01 10:00. Current time: 202
     contractEndDate: '2020-01-02T09:00',
   };
 
+  const today = '2020-01-02T09:00'
+
   // Act
 
-  const result = priceCalculations.estimatedDaysRented(contractMock.startDate);
+  const result = priceCalculations.estimatedDaysRented(contractMock.startDate, today);
 
   // Assert
 
@@ -194,16 +191,18 @@ it('currentDaysRented case 1: (Pick-up time: 2020.01.01 10:00. Current time:  20
     contractEndDate: '2020-01-02T10:45',
   };
 
+  const today = '2020-01-02T10:45'
+
   // Act
 
-  const result = priceCalculations.estimatedDaysRented(contractMock.contractEndDate);
+  const result = priceCalculations.estimatedDaysRented(contractMock.startDate, today);
 
   // Assert
 
   expect(result).toEqual(2);
 });
 
-it('actualReturnDays should call return the number of days when the car is not returned on time', () => {
+it('daysOverUnderContract should call return the number of days when the car is not returned on time', () => {
   // Arramge
   const contractMock = {
     borrowerFirstName: 'Batman',
@@ -226,7 +225,7 @@ it('actualReturnDays should call return the number of days when the car is not r
   expect(result).toEqual(1);
 });
 
-it('actualReturnDays should call return the number of days when the car is in advance', () => {
+it('daysOverUnderContract should call return the number of days when the car is in advance', () => {
   // Arramge
   const contractMock = {
     borrowerFirstName: 'Batman',

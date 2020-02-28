@@ -3,7 +3,6 @@ import moment from 'moment';
 import * as priceDiscounts from './discounts/priceDiscounts';
 
 export const estimatedDaysRented = (startTime, endTime) => {
-
   const days = moment
     .duration(moment(endTime, 'YYYY/MM/DDTHH:mm')
       .diff(moment(startTime, 'YYYY/MM/DDTHH:mm'))).asDays();
@@ -11,9 +10,8 @@ export const estimatedDaysRented = (startTime, endTime) => {
   return Math.ceil(days);
 };
 
-export const currentDaysRented = (startTime) => {
-
-  const endTime = moment(new Date(), 'YYYY/MM/DDTHH:mm');
+export const currentDaysRented = (startTime, today = new Date()) => {
+  const endTime = moment(today, 'YYYY/MM/DDTHH:mm');
   const days = moment
     .duration(moment(endTime, 'YYYY/MM/DDTHH:mm')
       .diff(moment(startTime, 'YYYY/MM/DDTHH:mm'))).asDays();
@@ -21,8 +19,9 @@ export const currentDaysRented = (startTime) => {
   return Math.ceil(days);
 };
 
-export const daysOverUnderContract = (currentDaysRentedFunction, estimatedDaysRentedFunction, startTime, endTime) => {
-
+export const daysOverUnderContract = (
+  currentDaysRentedFunction, estimatedDaysRentedFunction, startTime, endTime,
+) => {
   const currentDaysNumber = currentDaysRentedFunction(startTime, endTime);
   const estimatedDaysNumber = estimatedDaysRentedFunction(startTime);
 
@@ -52,12 +51,17 @@ export const estimatedAgeDiscount = (borrowerAge) => {
   if (borrowerAge >= 18 && borrowerAge <= 25) {
     return priceDiscounts.ageDiscountBelow25;
   }
-  if (borrowerAge < 18) {
-    return priceDiscounts.ageDiscountBelow18;
-  }
+
+  return priceDiscounts.ageDiscountBelow18;
 };
 
-export const estimatedPricePerDay = (estimatedDaysDiscountFunction, estimatedAgeDiscountFunction, daysRented, borrowerAge, carBasePrice) => {
+export const estimatedPricePerDay = (
+  daysRented,
+  borrowerAge,
+  carBasePrice,
+  estimatedDaysDiscountFunction = estimatedDaysDiscount,
+  estimatedAgeDiscountFunction = estimatedAgeDiscount,
+) => {
   const daysDiscount = estimatedDaysDiscountFunction(daysRented);
   const ageDiscount = estimatedAgeDiscountFunction(borrowerAge);
 

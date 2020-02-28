@@ -15,7 +15,7 @@ export default class CheckoutPage extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { id }= this.props.match.params;
     fetch(`http://localhost:3000/cars/${id}`)
       .then((res) => res.json())
       .then((result) => {
@@ -24,16 +24,10 @@ export default class CheckoutPage extends React.Component {
         });
         console.log(result);
       });
-    const time = (moment(new Date()).format('YYYY-MM-DDThh:mm'));
-    console.log(time);
-
-    const endTime = moment(new Date(), 'YYYY/MM/DDTHH:mm');
-    console.log(endTime)
   }
 
   render() {
     const car = { ...this.state.car };
-    const { carId } = this.props.match.params;
     console.log(car);
     return (
       <div className="checkoutMainContainer">
