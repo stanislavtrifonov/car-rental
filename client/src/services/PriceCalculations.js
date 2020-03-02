@@ -37,7 +37,7 @@ export const estimatedDaysDiscount = (daysRented) => {
     return priceDiscounts.daysDiscount2to6days;
   }
 
-  if (daysRented > 7) {
+  if (daysRented > 6) {
     return priceDiscounts.daysDiscount7PlusDays;
   }
 
