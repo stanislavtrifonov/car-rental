@@ -81,3 +81,7 @@ export const overduePenalty = (
 
   return 2;
 };
+
+export const currentPricePerDay = (overduePenaltyPercent, estimatedDailyPrice) => overduePenaltyPercent * estimatedDailyPrice
+
+

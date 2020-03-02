@@ -13,8 +13,8 @@ const DashboardItem = (props) => {
   const estimatedTotalPrice = priceAfterDaysAndAge * estimatedNumberOfDays;
   const daysOverUnderContract = priceCalculations.daysOverUnderContract(props.contract.startDate, props.contract.contractEndDate);
   const overduePenalty = priceCalculations.overduePenalty(daysOverUnderContract);
-  const currentTotalPrice = estimatedTotalPrice + (overduePenalty * daysOverUnderContract * priceAfterDaysDiscount)
-  const currentPricePerDay = overduePenalty * priceAfterDaysDiscount
+  const currentTotalPrice = estimatedTotalPrice + (overduePenalty * daysOverUnderContract * priceAfterDaysAndAge)
+  const currentPricePerDay = priceCalculations.currentPricePerDay(overduePenalty, priceAfterDaysAndAge);
   console.log(props.contract.startDate);
   return (
     <tr>

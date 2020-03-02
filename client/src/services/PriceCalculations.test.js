@@ -218,7 +218,7 @@ it('daysOverUnderContract should call return the number of days when the car is 
 
   // Act
 
-  const result = priceCalculations.daysOverUnderContract(mockCurrentDaysRented, mockEstimatedDaysRented, contractMock.startDate, contractMock.contractEndDate);
+  const result = priceCalculations.daysOverUnderContract(contractMock.startDate, contractMock.contractEndDate, mockCurrentDaysRented, mockEstimatedDaysRented);
 
   // Assert
 
@@ -241,9 +241,102 @@ it('daysOverUnderContract should call return the number of days when the car is 
 
   // Act
 
-  const result = priceCalculations.daysOverUnderContract(mockCurrentDaysRented, mockEstimatedDaysRented, contractMock.startDate, contractMock.contractEndDate);
+  const result = priceCalculations.daysOverUnderContract(contractMock.startDate, contractMock.contractEndDate, mockCurrentDaysRented, mockEstimatedDaysRented);
 
   // Assert
 
   expect(result).toEqual(-1);
+});
+
+
+it('overduePenalty should return 0 if overdue days < 1', () => {
+  // Arramge
+  const contractMock = {
+    borrowerFirstName: 'Batman',
+    borrowerLastName: 'Ivanov',
+    borrowerAge: '22',
+    startDate: '2020-01-01T10:00',
+    contractEndDate: '2020-01-02T09:00',
+  };
+
+  const overUnderDaysRented = -3;
+
+
+  // Act
+
+  const result = priceCalculations.overduePenalty(overUnderDaysRented);
+
+  // Assert
+
+  expect(result).toEqual(0);
+});
+
+
+it('overduePenalty should return 1.5 if overdue days < 6', () => {
+  // Arramge
+  const contractMock = {
+    borrowerFirstName: 'Batman',
+    borrowerLastName: 'Ivanov',
+    borrowerAge: '22',
+    startDate: '2020-01-01T10:00',
+    contractEndDate: '2020-01-02T09:00',
+  };
+
+  const overUnderDaysRented = 5;
+
+
+  // Act
+
+  const result = priceCalculations.overduePenalty(overUnderDaysRented);
+
+  // Assert
+
+  expect(result).toEqual(1.5);
+});
+
+
+it('overduePenalty should return 2 if overdue days >= 6', () => {
+  // Arramge
+  const contractMock = {
+    borrowerFirstName: 'Batman',
+    borrowerLastName: 'Ivanov',
+    borrowerAge: '22',
+    startDate: '2020-01-01T10:00',
+    contractEndDate: '2020-01-02T09:00',
+  };
+
+  const overUnderDaysRented = 7;
+
+
+  // Act
+
+  const result = priceCalculations.overduePenalty(overUnderDaysRented);
+
+  // Assert
+
+  expect(result).toEqual(2);
+});
+
+
+it('currentPricePerDay should return the product of its inputs', () => {
+  // Arramge
+  const contractMock = {
+    borrowerFirstName: 'Batman',
+    borrowerLastName: 'Ivanov',
+    borrowerAge: '22',
+    startDate: '2020-01-01T10:00',
+    contractEndDate: '2020-01-02T09:00',
+  };
+
+  const overduePenaltyPercent = 2
+  const estimatedDailyPrice = 2
+
+
+  // Act
+
+  const result = priceCalculations.currentPricePerDay(overduePenaltyPercent, estimatedDailyPrice);
+
+  // Assert
+
+  expect(result).toEqual(4);
 });
