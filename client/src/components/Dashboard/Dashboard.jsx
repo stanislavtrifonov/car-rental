@@ -41,6 +41,7 @@ class Dashboard extends React.Component {
               <th>Estimated Days Rented</th>
               <th>Estimated Price per Day</th>
               <th>Current Days Rented</th>
+              <th>Days Overdue</th>
               <th>Current Price per Day</th>
               <th>Current Total Price</th>
               <th>Return Car</th>

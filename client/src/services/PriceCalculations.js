@@ -20,10 +20,10 @@ export const currentDaysRented = (startTime, today = new Date()) => {
 };
 
 export const daysOverUnderContract = (
-  currentDaysRentedFunction, estimatedDaysRentedFunction, startTime, endTime,
+  startTime, endTime, currentDaysRentedFunction = currentDaysRented, estimatedDaysRentedFunction = estimatedDaysRented,
 ) => {
-  const currentDaysNumber = currentDaysRentedFunction(startTime, endTime);
-  const estimatedDaysNumber = estimatedDaysRentedFunction(startTime);
+  const currentDaysNumber = currentDaysRentedFunction(startTime);
+  const estimatedDaysNumber = estimatedDaysRentedFunction(startTime, endTime);
 
   return currentDaysNumber - estimatedDaysNumber;
 };
@@ -66,4 +66,18 @@ export const estimatedPricePerDay = (
   const ageDiscount = estimatedAgeDiscountFunction(borrowerAge);
 
   return carBasePrice * daysDiscount * ageDiscount;
+};
+
+
+export const overduePenalty = (
+  overUnderDaysRented,
+) => {
+  if (overUnderDaysRented < 1) {
+    return 0;
+  }
+  if (overUnderDaysRented < 6) {
+    return 1.5;
+  }
+
+  return 2;
 };
