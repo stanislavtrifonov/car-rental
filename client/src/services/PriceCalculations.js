@@ -6,15 +6,20 @@ export const estimatedDaysRented = (startTime, endTime) => {
   const days = moment
     .duration(moment(endTime, 'YYYY/MM/DDTHH:mm')
       .diff(moment(startTime, 'YYYY/MM/DDTHH:mm'))).asDays();
+      console.log(days);
+  if (days < 1) {
+    return 1;
+  }
 
   return Math.ceil(days);
 };
 
 export const currentDaysRented = (startTime, today = new Date()) => {
   const endTime = moment(today, 'YYYY/MM/DDTHH:mm');
-  const days = moment
+  const days = (moment
     .duration(moment(endTime, 'YYYY/MM/DDTHH:mm')
-      .diff(moment(startTime, 'YYYY/MM/DDTHH:mm'))).asDays();
+      .diff(moment(startTime, 'YYYY/MM/DDTHH:mm'))).asDays());
+
 
   return Math.ceil(days);
 };
@@ -82,6 +87,4 @@ export const overduePenalty = (
   return 2;
 };
 
-export const currentPricePerDay = (overduePenaltyPercent, estimatedDailyPrice) => overduePenaltyPercent * estimatedDailyPrice
-
-
+export const currentPricePerDay = (overduePenaltyPercent, estimatedDailyPrice) => overduePenaltyPercent * estimatedDailyPrice;

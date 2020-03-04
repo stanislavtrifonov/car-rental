@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './AvailableCarCard.css';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ const AvailableCarCard = ({ car }) => (
           {car.__className__.price}
           $
         </Card.Text>
-        <Link to={`/cars/${car.id}`}>Checkout</Link>
+        <Button variant="outline-success"><Link to={`/cars/${car.id}`}>Checkout</Link></Button>
       </Card.Body>
     </Card>
   </div>
