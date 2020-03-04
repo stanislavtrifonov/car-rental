@@ -27,7 +27,37 @@ const seed = async () => {
 
     await classRepository.save(classB);
 
+    const classC = classRepository.create();
+
+    classC.className = 'C';
+    classC.price =  90;
+
+    await classRepository.save(classC);
+
+    const classD = classRepository.create();
+
+    classD.className = 'D';
+    classD.price =  110;
+
+    await classRepository.save(classD);
+
+    const classE = classRepository.create();
+
+    classE.className = 'E';
+    classE.price =  130;
+
+    await classRepository.save(classE);
+
     // Creating cars
+    const fordFiesta = carsRepository.create();
+
+    fordFiesta.brand = 'Ford';
+    fordFiesta.model =  'Fiesta';
+    fordFiesta.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRB_5n0jNb1OkD7JwMitM0WBDmFEKN3-eL6u4Zxr4ToIYiiOgFQ';
+    fordFiesta.className = Promise.resolve(classA);
+
+    // tslint:disable-next-line: no-console
+    await carsRepository.save(fordFiesta);
 
     const opelAstra = carsRepository.create();
 
@@ -53,11 +83,51 @@ const seed = async () => {
 
     vwGolf2.brand = 'Volkswagen';
     vwGolf2.model =  'Golf';
-    vwGolf2.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiWYQ_9acjRQoBwLutTfj-2Gihely4BfLvpATS7P23cDvJd8ZT';
+    vwGolf2.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiXWt69XclyChJM0K1Ra6xSDs0MZCGPPPPi0IhPhgp8guvaas0';
     vwGolf2.className = Promise.resolve(classB);
 
     // tslint:disable-next-line: no-console
     await carsRepository.save(vwGolf2);
+
+    const fordFocus = carsRepository.create();
+
+    fordFocus.brand = 'Ford';
+    fordFocus.model =  'Focus';
+    fordFocus.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSqMKu9i6dP41pq4NAuASBliNaN1MME2Iozcdtj5zaBigqCA5ij';
+    fordFocus.className = Promise.resolve(classB);
+
+    // tslint:disable-next-line: no-console
+    await carsRepository.save(fordFocus);
+
+    const fordFocus2 = carsRepository.create();
+
+    fordFocus2.brand = 'Ford';
+    fordFocus2.model =  'Focus';
+    fordFocus2.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgxlvv03KJ05CX4lTMBFe-w9Q3bRhe0xNG0Da3pj4tom6lQCA0';
+    fordFocus2.className = Promise.resolve(classB);
+
+    // tslint:disable-next-line: no-console
+    await carsRepository.save(fordFocus2);
+
+    const MercedesAMGGTRC190 = carsRepository.create();
+
+    MercedesAMGGTRC190.brand = 'Mercedes';
+    MercedesAMGGTRC190.model =  'AMG-GTR-C190';
+    MercedesAMGGTRC190.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTsPF6q6gs_dY1VDV1KpUYZc4FzXZYAYOwzgFv1wTLHWtHrg_5-';
+    MercedesAMGGTRC190.className = Promise.resolve(classD);
+
+    // tslint:disable-next-line: no-console
+    await carsRepository.save(MercedesAMGGTRC190);
+
+    const mercedesMClass = carsRepository.create();
+
+    mercedesMClass.brand = 'Mercedes';
+    mercedesMClass.model =  'M-Class';
+    mercedesMClass.picture =  'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRHMKZgVMDnO_XCfesTctpUEVLBLPXu4IAFnB_tgE87dF2rsBVv';
+    mercedesMClass.className = Promise.resolve(classE);
+
+    // tslint:disable-next-line: no-console
+    await carsRepository.save(mercedesMClass);
 
         // Creating contracts
 
