@@ -160,6 +160,25 @@ it('estimatedDaysRented case 1: (Pick-up time: 2020.01.01 10:00. Return time 202
   expect(result).toEqual(2);
 });
 
+it('estimatedDaysRented case 3: (same day return is considered 1 day)', () => {
+  // Arramge
+  const contractMock = {
+    borrowerFirstName: 'Batman',
+    borrowerLastName: 'Ivanov',
+    borrowerAge: '22',
+    startDate: '2020-01-01T10:00',
+    contractEndDate: '2020-01-01T12:00',
+  };
+
+  // Act
+
+  const result = priceCalculations.estimatedDaysRented(contractMock.startDate, contractMock.contractEndDate);
+
+  // Assert
+
+  expect(result).toEqual(1);
+});
+
 it('currentDaysRented case 1: (Pick-up time: 2020.01.01 10:00. Current time: 2020.01.02 09:00 is considered 1 day)', () => {
   // Arramge
   const contractMock = {
