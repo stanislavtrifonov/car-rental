@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Button, Navbar, Form, FormControl, Nav,
 } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const NavigationBarCars = () => (

@@ -5,10 +5,11 @@ import { Car } from '../database/entities/car.entity';
 import { Repository } from 'typeorm';
 import { Contract } from '../database/entities/contract.entity';
 import { NewContractDTO } from './models/newContract.dto';
-import { promises } from 'dns';
 
 @Injectable()
 export class ContractsService {
+    estimatedDaysDiscount: any;
+    estimatedAgeDiscount: any;
     public constructor(
         @InjectRepository(Car) private readonly carsRepository: Repository<Car>,
         @InjectRepository(Contract) private readonly contractsRepository: Repository<Contract>
@@ -43,22 +44,33 @@ export class ContractsService {
         const newContract = await this.contractsRepository.create(body)
         newContract.car = Promise.resolve(foundCar)
         const createdContract = await this.contractsRepository.save(newContract)
-        console.log(newContract)
+        foundCar.isBorrowed = true
+        await this.carsRepository.save(foundCar)
+
         return createdContract;
     }
 
-    public async returnCar(contractId: string, carId: string): Promise<Contract> {
+    public async returnCar(contractId: string, body: {name: number}): Promise<Contract> {
         const foundContract = await this.contractsRepository.findOne({
             where: {
                 id: contractId
-            }
+            },
+            relations: ['car', 'car.className'],
         })
 
         const foundCar = await this.carsRepository.findOne({
             where: {
-                id: carId
-            }
+                id: (await foundContract.car).id
+            },
+            relations: ['className'],
         })
+
+        foundCar.isBorrowed = false;
+        await this.carsRepository.save(foundCar)
+
+        foundContract.deliveredDate = moment(new Date()).format('YYYY-MM-DDTHH:mm')
+        foundContract.pricePaid = body.name;
+        await this.contractsRepository.save(foundContract)
 
         return foundContract;
     }

@@ -3,13 +3,13 @@ import { Button } from 'react-bootstrap';
 import * as priceCalculations from '../../../services/PriceCalculations';
 
 class DashboardItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  onSubmit = () => {
 
+  handleClick = (event) => {
+    console.log(event.target.name, this.props.contract.id)
+    this.props.onChildClick(event.target.name, this.props.contract.id)
   }
+  
 
   render() {
     const estimatedNumberOfDays = priceCalculations.estimatedDaysRented(this.props.contract.startDate, this.props.contract.contractEndDate);
@@ -48,7 +48,7 @@ class DashboardItem extends React.Component {
         <td>{daysOverUnderContract}</td>
         <td>{currentPricePerDay}</td>
         <td>{currentTotalPrice}</td>
-        <Button variant="outline-success">Return car</Button>
+        <Button variant="outline-success" onClick={this.handleClick} name={currentTotalPrice}>Return car</Button>
       </tr>
     );
   }

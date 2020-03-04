@@ -1,9 +1,6 @@
-import { Injectable } from '@nestjs/common';
 import * as moment from 'moment';
 
-
-@Injectable()
-export class CalculationService {
+export default class Calculations {
 
     priceDiscounts = {
         daysDiscount1day: 1,
@@ -80,8 +77,8 @@ export class CalculationService {
         estimatedDaysDiscountFunction = this.estimatedDaysDiscount,
         estimatedAgeDiscountFunction = this.estimatedAgeDiscount,
       ) => {
-        const daysDiscount: any = estimatedDaysDiscountFunction(daysRented);
-        const ageDiscount: any = estimatedAgeDiscountFunction(borrowerAge);
+        const daysDiscount = estimatedDaysDiscountFunction(daysRented);
+        const ageDiscount = estimatedAgeDiscountFunction(borrowerAge);
       
         return carBasePrice * daysDiscount * ageDiscount;
       };
@@ -101,4 +98,5 @@ export class CalculationService {
       };
       
       currentPricePerDay = (overduePenaltyPercent, estimatedDailyPrice) => overduePenaltyPercent * estimatedDailyPrice;
+
 }

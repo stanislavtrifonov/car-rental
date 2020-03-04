@@ -35,13 +35,14 @@ export class ContractsController {
       return await this.contractsService.createContract(body, carId);
     }
 
-    @Post()
+    @Post(':contractId')
     @HttpCode(HttpStatus.CREATED)
     public async returnCar(
-      @Body() {contractId, carId},
+      @Body() body: {name: number},
+      @Param('contractId') contractId: string,
     ): Promise<Contract> {
 
-      return await this.contractsService.returnCar(contractId, carId);
+      return await this.contractsService.returnCar(contractId, body);
     }
   
 }
