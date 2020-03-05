@@ -70,7 +70,7 @@ const BookingForm = (props) => (
     <Button variant="outline-success" onClick={props.onInputSubmit}>
       <Link to="/home">Checkout</Link>
     </Button>
-    <Button variant="outline-success">Cancel</Button>
+    <Button variant="outline-success"><Link to="/home">Cancel</Link></Button>
   </Form>
 );
 

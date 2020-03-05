@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import AvailableCarCard from './AvailableCarCard/AvailableCarCard';
 import './AvailableCarsContainer.css';
 
@@ -24,7 +25,17 @@ class AvailableCarsContainer extends React.Component {
 
   render() {
     const { cars } = this.state;
-    const cards = cars.map((car) => <AvailableCarCard key={car.id} car={car} />);
+    const { word } = this.props;
+    console.log(word.searchWord)
+    const searchWord = word.searchWord;
+    let filteredCars = null;
+    if (searchWord !== null) {
+      filteredCars = cars.filter((car) => searchWord === car.brand);
+    } else {
+      filteredCars = cars;
+    }
+
+    const cards = filteredCars.map((car) => <AvailableCarCard key={car.id} car={car} />);
 
     return (
       <div className="container">
@@ -36,4 +47,11 @@ class AvailableCarsContainer extends React.Component {
   }
 }
 
-export default AvailableCarsContainer;
+const mapStateToProps = (state) => {
+
+  return {
+    word: state.searchWord,
+  };
+};
+
+export default connect(mapStateToProps, null)(AvailableCarsContainer);
