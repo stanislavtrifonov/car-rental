@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
-import priceEstimate from './priceEstimate';
+import searchWord from './searchWord';
 
 
-export default combineReducers({ priceEstimate });
+const rootReducer = combineReducers({ searchWord });
+
+export default rootReducer;
