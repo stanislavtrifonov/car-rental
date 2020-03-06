@@ -48,7 +48,7 @@ class DashboardItem extends React.Component {
         <td>{daysOverUnderContract}</td>
         <td>{currentPricePerDay}</td>
         <td>{currentTotalPrice}</td>
-        <Button variant="outline-success" onClick={this.handleClick} name={currentTotalPrice}>Return car</Button>
+        <td><Button variant="outline-success" onClick={this.handleClick} name={currentTotalPrice}>Return car</Button></td>
       </tr>
     );
   }
