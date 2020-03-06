@@ -63,7 +63,7 @@ export default class CheckoutPage extends React.Component {
       }
     })
       .then(data => data.json())
-      .then(response => console.log(response))
+      .then(response => this.props.history.push({pathname: '/dashboard'}))
       .catch(err => console.log(err));
   }
 
