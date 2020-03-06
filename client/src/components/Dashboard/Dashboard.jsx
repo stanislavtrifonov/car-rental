@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
     const contracts = this.state.contracts.map((contract) => <DashboardItem key={contract.id} contract={contract} onChildClick={this.onSubmit} />);
 
     return (
-      <div className="containerTable">
+      <div className="dashboardContainer">
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>

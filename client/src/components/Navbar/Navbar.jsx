@@ -23,20 +23,22 @@ class NavigationBarCars extends React.Component {
     console.log(this.state.searchWord)
   }
 
+  
+
 
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar className="Navbar" bg="dark" variant="dark">
         <Navbar.Brand className="brand" href="/home">Awesome Cars</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Button variant="link"><Link to="/home">Cars</Link></Button>
+            <Button className="carsPage" variant="link" onClick={() => this.props.onSearch('')}><Link to="/home">Cars</Link></Button>
             <Button variant="link"><Link to="/dashboard">Dashboard</Link></Button>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" data-name="searchWord"  onChange={this.onInputChange}/>
-            <Button variant="outline-success" onClick={() => this.props.onSearch(this.state.searchWord)}>Search</Button>
+          <Form inline id="searchForm">
+            <FormControl className="searchInput" type="text" placeholder="Search" className="mr-sm-2" data-name="searchWord"  onChange={this.onInputChange} />
+            <Button className="searchBtn" variant="outline-success" onClick={() => this.props.onSearch(this.state.searchWord)}><Link to="/home">Search</Link></Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>

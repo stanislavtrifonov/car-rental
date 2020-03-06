@@ -15,6 +15,7 @@ const BookingForm = (props) => (
       <Form.Group as={Col} md="5" controlId="validationCustom01">
         <Form.Label>First name</Form.Label>
         <Form.Control
+          className="firstNameField"
           required
           type="text"
           placeholder="First name"
@@ -27,6 +28,7 @@ const BookingForm = (props) => (
       <Form.Group as={Col} md="5" controlId="validationCustom02">
         <Form.Label>Last name</Form.Label>
         <Form.Control
+          className="lastNameField"
           required
           type="text"
           placeholder="Last name"
@@ -41,6 +43,7 @@ const BookingForm = (props) => (
       <Form.Group as={Col} md="5" controlId="validationCustom03">
         <Form.Label>Age</Form.Label>
         <Form.Control
+          className="ageField"
           type="number"
           placeholder="Age"
           defaultValue="18"
@@ -55,6 +58,7 @@ const BookingForm = (props) => (
       <Form.Group as={Col} md="5" controlId="validationCustom04">
         <Form.Label>Return Date</Form.Label>
         <Form.Control
+          className="dateField"
           type="datetime-local"
           required
           data-name="contractEndDate"
@@ -67,8 +71,8 @@ const BookingForm = (props) => (
         </Form.Control.Feedback>
       </Form.Group>
     </Form.Row>
-    <Button variant="outline-success" onClick={props.onInputSubmit}>
-      <Link to="/home">Checkout</Link>
+    <Button className="bookCarBtn" variant="outline-success" onClick={props.onInputSubmit}>
+        Checkout
     </Button>
     <Button variant="outline-success"><Link to="/home">Cancel</Link></Button>
   </Form>

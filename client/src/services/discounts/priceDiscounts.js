@@ -4,4 +4,4 @@ export const daysDiscount7PlusDays = 0.75;
 export const daysDiscountNegativeDays = 'Estimated days cannot be negative';
 export const ageDiscountBelow25 = 1.2;
 export const ageDiscountAbove25 = 1;
-export const ageDiscountBelow18 = 'Borrower age cannot be below 18';
+export const ageDiscountBelow18 = 0;

@@ -2,7 +2,7 @@
 import SEARCH_WORD from '../actionTypes';
 
 const initialState = {
-  searchWord: null,
+  searchWord: '',
 };
 
 const searchWord = (state = initialState, action) => {

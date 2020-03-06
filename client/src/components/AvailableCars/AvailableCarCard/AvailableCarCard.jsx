@@ -26,7 +26,7 @@ const AvailableCarCard = ({ car }) => (
           {car.__className__.price}
           $
         </Card.Text>
-        <Button variant="outline-success"><Link to={`/cars/${car.id}`}>Checkout</Link></Button>
+        <Button className="checkoutBtn" variant="outline-success"><Link to={`/cars/${car.id}`}>Checkout</Link></Button>
       </Card.Body>
     </Card>
   </div>

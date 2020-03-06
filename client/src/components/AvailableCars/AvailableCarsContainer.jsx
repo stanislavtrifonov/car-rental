@@ -29,7 +29,7 @@ class AvailableCarsContainer extends React.Component {
     console.log(word.searchWord)
     const searchWord = word.searchWord;
     let filteredCars = null;
-    if (searchWord !== null) {
+    if (searchWord !== '') {
       filteredCars = cars.filter((car) => searchWord === car.brand);
     } else {
       filteredCars = cars;
