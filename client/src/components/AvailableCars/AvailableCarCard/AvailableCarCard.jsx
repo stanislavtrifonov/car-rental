@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const AvailableCarCard = ({ car }) => (
   <div className="col-lg-4 col-md-6">
-    <Card className="card">
+    <Card className="cardAvailableCar">
       <Card.Img
         variant="top"
         src={car.picture}

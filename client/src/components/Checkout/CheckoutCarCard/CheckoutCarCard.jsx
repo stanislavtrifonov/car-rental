@@ -5,7 +5,7 @@ import './CheckoutCarCard.css';
 const CheckoutCarCard = (props) => (
   <Card className="checkoutCarCard">
     <h1>Car</h1>
-    <Card.Img variant="top" src={props.car.picture} />
+    <Card.Img className="checkoutCarCardImg" variant="top" src={props.car.picture} />
     <Card.Body>
       <Card.Title>{props.car.model}</Card.Title>
       <Card.Text>{props.car.brand}</Card.Text>

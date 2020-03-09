@@ -6,7 +6,7 @@ import CheckoutPage from './components/Checkout/CheckoutPage';
 
 
 const AppRouter = () => (
-  <div>
+  <div className="routingContainer">
     <Route path="/home" component={AvailableCarsContainer} />
     <Route path="/dashboard" component={Dashboard} />
     <Route path="/cars/:id" component={CheckoutPage} />

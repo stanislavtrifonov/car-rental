@@ -22,7 +22,7 @@ module.exports = {
       .setValue('input[type=text]', 'Ford')
       .click('.searchBtn')
       .assert.visible('.container')
-      .assert.visible('.card')
+      .assert.visible('.cardAvailableCar')
       .assert.visible('.checkoutBtn')
       .click('.checkoutBtn')
       .assert.urlContains('/cars')
@@ -43,7 +43,7 @@ module.exports = {
       .click('.carsPage')
       .setValue('input[type=text]', 'Ford')
       .click('.searchBtn')
-      .assert.not.elementPresent('.card')
+      .assert.not.elementPresent('.cardAvailableCar')
       .end();
   },
 };

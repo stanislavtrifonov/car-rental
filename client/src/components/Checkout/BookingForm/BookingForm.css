@@ -1,5 +1,8 @@
-
-
+.checkoutFormContainer {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .checkoutFormContainer {
     width: 30%;
@@ -8,4 +11,10 @@
 .checkoutFormContainer h1 {
     padding-bottom: 8%;
 }
+
+.bookingFormInputFields {
+    padding-left: 10%;
+}
+
+
 
