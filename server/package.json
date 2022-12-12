@@ -27,7 +27,7 @@
     "@hapi/joi": "^17.1.0",
     "@nestjs/common": "^6.10.14",
     "@nestjs/core": "^6.10.14",
-    "@nestjs/platform-express": "^6.10.14",
+    "@nestjs/platform-express": "^9.2.1",
     "@nestjs/typeorm": "^6.3.1",
     "helmet": "^3.21.2",
     "moment": "^2.24.0",
